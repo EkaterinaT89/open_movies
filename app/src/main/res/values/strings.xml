@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">OMD</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="splash_name">Open Movie</string>
+    <string name="movies">Movies</string>
+    <string name="movie_info">Movie info</string>
+    <string name="movie">Movie</string>
+    <string name="liked">liked</string>
+    <string name="disliked">disliked</string>
+    <string name="comment">comment</string>
+    <string name="comments">COMMENTS</string>
+    <string name="call_to_action">ooops nothing is here. \nset the search parametrs </string>
+    <string name="search_title"><b>Search</b></string>
+    <string name="title">Title</string>
+    <string name="quantity">Quantity</string>
+    <string name="apply"><b>Apply</b></string>
+    <string name="imdb">IMDb</string>
+    <string name="comment_hint">Write your comment</string>
+    <string name="leave_comment">Leave comment</string>
+
+    <string name="no_network">No internet</string>
+    <string name="unknown_exception">Something went wrong :(</string>
+    <string name="try_again">Try again</string>
+
+    <string name="error_quantity">Quantity should be from 1 to 100</string>
+    <string name="error_title">You should write something</string>
+    <string name="link">link</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

@@ -1,0 +1,154 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        applicationId "ru.OMD"
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+        compose true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders.usesCleartextTraffic = false
+            buildConfigField "String", "BASE_URL", '"https://omdbapi.com/"'
+        }
+        debug {
+            manifestPlaceholders.usesCleartextTraffic = true
+            buildConfigField "String", "BASE_URL", '"https://omdbapi.com/"'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_compiler_version
+    }
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(11))
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+
+    namespace 'ru.OMD'
+}
+
+dependencies {
+    def retrofit_version = "2.9.0"
+    def okhttploggin_version = "4.9.3"
+    def okhttp_version = "4.9.3"
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation "com.google.code.gson:gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttploggin_version"
+
+    // Android
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.activity:activity-ktx:1.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.activity:activity-compose:1.6.1'
+
+    //Compose
+    implementation "androidx.compose.ui:ui:1.4.0-alpha02"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.material3:material3:1.1.0-alpha02"
+    implementation "androidx.compose.material3:material3-window-size-class:1.1.0-alpha02"
+    implementation "io.coil-kt:coil-compose:2.1.0"
+    implementation "com.google.accompanist:accompanist-placeholder-material:0.25.1"
+    implementation "androidx.compose.ui:ui-util:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.animation:animation:$compose_version"
+    implementation "androidx.compose.animation:animation-core:$compose_version"
+    implementation "androidx.compose.compiler:compiler:1.3.2"
+    implementation "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    // Constraint Compose
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    //  Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+
+    //  Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    // Lifecycle
+    def lifecycleVersion = "2.5.1"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    //Dagger Hilt
+    def hilt_work_version = "1.0.0"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-work:$hilt_work_version"
+
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.23.1"
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.13.2") {
+        transitive = false
+    }
+    kapt "com.github.bumptech.glide:compiler:4.13.2"
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.13.2"
+
+    //  Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+//    Browser
+    def browser_version = "1.4.0"
+    implementation "androidx.browser:browser:$browser_version"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    testImplementation "io.insert-koin:koin-test:3.2.0"
+    testImplementation "io.insert-koin:koin-test-junit4:3.2.0"
+    testImplementation "org.mockito:mockito-inline:4.5.1"
+}

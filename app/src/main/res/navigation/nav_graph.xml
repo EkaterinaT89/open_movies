@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/callToActionFragment">
+    <fragment
+        android:id="@+id/listMoviesFragment"
+        android:name="ru.OMD.presentation.ListMoviesFragment"
+        android:label="ListMoviesFragment" />
+    <fragment
+        android:id="@+id/callToActionFragment"
+        android:name="ru.OMD.presentation.CallToActionFragment"
+        android:label="CallToActionFragment" />
+    <fragment
+        android:id="@+id/searchBottomFragment"
+        android:name="ru.OMD.presentation.SearchBottomFragment"
+        android:label="SearchBottomFragment" />
+    <fragment
+        android:id="@+id/cardMovieFragment"
+        android:name="ru.OMD.presentation.CardMovieFragment"
+        android:label="CardMovieFragment" />
+</navigation>
